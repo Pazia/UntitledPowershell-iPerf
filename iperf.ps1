@@ -112,8 +112,8 @@ Invoke-Expression $kviknet_upload
 Write-Host "`niPerf resultat via Kviknet:"
   if(Select-String -path "$env:TEMP\$kviknet" -pattern "iperf Done.")
 {
-    (Get-Content "$env:TEMP\$kviknet" | Select-Object -Index 395) -replace '.+\b(\d+\sMbits/sec).+', 'Download: $1'
-    (Get-Content "$env:TEMP\$kviknet" | Select-Object -Index 792) -replace '.+\b(\d+\sMbits/sec).+', 'Upload: $1'
+    (Get-Content "$env:TEMP\$kviknet" | Select-Object -Index 395) -replace '.+\b(\d.+\sMbits/sec).+', 'Download: $1'
+    (Get-Content "$env:TEMP\$kviknet" | Select-Object -Index 792) -replace '.+\b(\d.+\sMbits/sec).+', 'Upload: $1'
 }
   else {
     Write-Host "Fejl observeret under hastighedsmålinger for Kviknet."
@@ -125,8 +125,8 @@ Invoke-Expression $deic_upload
 Write-Host "`niPerf resultat via DeiC:"
   if(Select-String -path "$env:TEMP\$deic" -pattern "iperf Done.")
 {
-    (Get-Content "$env:TEMP\$deic" | Select-Object -Index 395) -replace '.+\b(\d+\sMbits/sec).+', 'Download: $1'
-    (Get-Content "$env:TEMP\$deic" | Select-Object -Index 792) -replace '.+\b(\d+\sMbits/sec).+', 'Upload: $1'
+    (Get-Content "$env:TEMP\$deic" | Select-Object -Index 395) -replace '.+\b(\d.+\sMbits/sec).+', 'Download: $1'
+    (Get-Content "$env:TEMP\$deic" | Select-Object -Index 792) -replace '.+\b(\d.+\sMbits/sec).+', 'Upload: $1'
 }
   else {
     Write-Host "Fejl observeret under hastighedsmålinger for DeiC."
@@ -138,8 +138,8 @@ Invoke-Expression $fiberby_upload
 Write-Host "`niPerf resultat via Fiberby:"
   if(Select-String -path "$env:TEMP\$fiberby" -pattern "iperf Done.")
 {
-    (Get-Content "$env:TEMP\$fiberby" | Select-Object -Index 395) -replace '.+\b(\d+\sMbits/sec).+', 'Download: $1'
-    (Get-Content "$env:TEMP\$fiberby" | Select-Object -Index 792) -replace '.+\b(\d+\sMbits/sec).+', 'Upload: $1'
+    (Get-Content "$env:TEMP\$fiberby" | Select-Object -Index 395) -replace '.+\b(\d.+\sMbits/sec).+', 'Download: $1'
+    (Get-Content "$env:TEMP\$fiberby" | Select-Object -Index 792) -replace '.+\b(\d.+\sMbits/sec).+', 'Upload: $1'
 }
   else {
     Write-Host "Fejl observeret under hastighedsmålinger for Fiberby."
