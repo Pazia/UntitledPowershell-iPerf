@@ -80,7 +80,7 @@ if ((Test-Path $env:TEMP\iperf3.exe -PathType Leaf) -and (Test-Path $env:TEMP\cy
 
 # Warning if 1 Gbps uplink isn't detected
 Get-NetAdapter -Name "*" -Physical | ForEach-Object {  
-    if ($_.LinkSpeed -eq "100 Mbps") { 
+    if ($_.LinkSpeed -ne "1 Gbps") {
       Write-Warning "Netværkskort opererer ikke med 1 Gbps uplink som forventet."
     }
     else {
