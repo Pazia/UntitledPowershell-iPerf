@@ -1,5 +1,10 @@
 Readme.txt for UntitledPowershell-iPerf
 -------------------------------------------
-To-do:
-1) Create a readme.txt file and fill it.
-2) Something else..
+iPerf speed measurement script.
+
+Feel free to leave a comment or feedback about the script.
+
+# Roadmap - Still in progress
+Upload created text files to FTP/HTTP-site.
+Send created text files to mail.
+Move the created text files to user's document folder for easier access.
