@@ -1,5 +1,5 @@
-﻿<#
-Sidst opdateret d. 23 maj 2022.
+<#
+Sidst opdateret d. 25 maj 2022.
 State: Pre-release
 Udviklet af: Jesper Sørensen - jesper@pazia.dk
 #>
@@ -11,12 +11,12 @@ Roadmap
 - Fejl indrapporteres via log-filen for fejlsøgning og forbedring af programmet.
 - Velkommen/afslutning af scriptet
 - Bed om tilladelse til at uploade oprettet filer til FTP/HTTP-server
-- Flyt log-filerne fra %temp%-mappen for at undgå sletning
+- Flyt log-filerne fra %temp%-mappen, så brugeren har mulighed for at åbne dem
 
 $ispList = 'YouSee', 'Telenor', 'Fibia', 'Senia Network', 'BOLIG:NET', 'TDC Erhverv', 'Hiper', 'Fastspeed', 'Stofa', 'Boxer', 'IP Vision', 'Altibox', 'Cibicom', 'Kviknet'
 
 Opdateringer til scriptet
-- Resultater fra iPerf vises nu korrekt.
+- Endelig vises resultater fra iPerf korrekt. RegEx fejl rettet.
 - Opdateret iPerf version - https://files.budman.pw/iperf3.11_64bit.zip
 #>
 
@@ -80,7 +80,7 @@ if ((Test-Path $env:TEMP\iperf3.exe -PathType Leaf) -and (Test-Path $env:TEMP\cy
 
 # Warning if 1 Gbps uplink isn't detected
 Get-NetAdapter -Name "*" -Physical | ForEach-Object {  
-    if ($_.LinkSpeed -ne "1 Gbps") {
+    if ($_.LinkSpeed -ne "1 Gbps") { 
       Write-Warning "Netværkskort opererer ikke med 1 Gbps uplink som forventet."
     }
     else {
@@ -151,9 +151,8 @@ Write-Host "`niPerf resultat via Fiberby:"
 Write-Host "`nIndhenter oplysninger om netværkskortet.. " -NoNewline
 
 Add-Content -Path "$env:TEMP\$log" -Encoding UTF8 -Value "Udført d. $(Get-TimeStamp)" -PassThru > $null
-Get-NetAdapter -Name "*" | Format-Table Name, InterfaceDescription, VlanID, LinkSpeed, MediaConnectionState | Out-File -Encoding utf8 -FilePath "$env:TEMP\$log" -Append
+Get-NetAdapter -Name "*" | Format-Table Name, InterfaceDescription, VlanID, LinkSpeed, MediaConnectionState | Out-File -Encoding UTF8 -FilePath "$env:TEMP\$log" -Append
 
-Write-Host "Kontrollerer netværkskort.. " -NoNewline
 Write-Host "[" -NoNewline
 Write-Host "OK" -ForegroundColor DarkGreen -NoNewline
 Write-Host "]"
@@ -161,14 +160,6 @@ Write-Host "]"
 # Move .txt files - STILL IN PROGRESS
 
 # End of script
-$timeBeforeStart = 0
-$waitSeconds = 15
-
-Start-Sleep -Seconds $timeBeforeStart
-
-$waitSeconds..0 | Foreach-Object {
-Write-Host "`rAfslutter scriptet om: $_ sekunder" -NoNewline
-Start-Sleep -Seconds 1
-}
+Write-Host "Tak for nu!"
 
 Break
