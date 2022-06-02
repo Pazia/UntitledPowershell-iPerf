@@ -3,7 +3,7 @@ Readme.txt for UntitledPowershell-iPerf
 Danish iPerf speed measurement script.
 
 Servers used in the script are:
-**Kviknet**, **DeiC** and **Fiberby**.
+**Kviknet**, **DeiC**, **Fiberby** and **Globalconnect**.
 If you have knowledge about other iPerf servers located in Denmark, please feel free to contact me or leave a comment.
 
 # Overview about the script
