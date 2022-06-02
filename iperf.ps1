@@ -83,7 +83,7 @@ if ((Test-Path $env:TEMP\iperf3.exe -PathType Leaf) -and (Test-Path $env:TEMP\cy
     Move-Item -Path $env:TEMP\iperf3.11_64bit\*.* -Destination $env:TEMP -Force > $null
     
     Remove-Item -Path $env:TEMP\iperf3.11_64bit -Force > $null
-    Remove-Item -Path $env:TEMP\iperf.zip -Force > $null
+    Remove-Item -Path $env:TEMP\iperf3.zip -Force > $null
 
     Write-Host "[" -NoNewline
     Write-Host "OK" -ForegroundColor DarkGreen -NoNewline
